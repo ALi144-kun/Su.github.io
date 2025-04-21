@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Ziyaretçi IP Adresi</title>
+  <title>Senin IP Adresin (IPv4)</title>
 </head>
 <body>
-  <h1>Senin IP adresin:</h1>
+  <h1>Senin IPv4 Adresin:</h1>
   <p id="ip">Yükleniyor...</p>
 
   <script>
-    fetch('https://api64.ipify.org?format=json')
+    fetch('https://api.ipify.org?format=json')
       .then(response => response.json())
       .then(data => {
         document.getElementById('ip').textContent = data.ip;
