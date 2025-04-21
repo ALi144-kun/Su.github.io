@@ -1,78 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Jumpscare</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      background: black;
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      font-family: sans-serif;
-    }
-
-    button {
-      padding: 15px 30px;
-      font-size: 20px;
-      cursor: pointer;
-      background-color: red;
-      border: none;
-      border-radius: 10px;
-      color: white;
-      transition: 0.2s;
-    }
-
-    button:hover {
-      background-color: darkred;
-    }
-
-    #jumpscare {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: black;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-    }
-
-    #jumpscare img {
-      max-width: 100%;
-      max-height: 100%;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <title>Ziyaretçi IP Adresi</title>
 </head>
 <body>
-  <div>
-    <h2>Hazırsan butona tıkla!</h2>
-    <button onclick="triggerJumpscare()">Tıkla!</button>
-  </div>
-
-  <div id="jumpscare">
-    <img src="https://i.imgur.com/Z9qZ6Xy.png" alt="Jumpscare Image" />
-    <audio id="scream-sound" src="https://www.myinstants.com/media/sounds/movie_1.mp3"></audio>
-  </div>
+  <h1>Senin IP adresin:</h1>
+  <p id="ip">Yükleniyor...</p>
 
   <script>
-    function triggerJumpscare() {
-      const jumpscare = document.getElementById("jumpscare");
-      const sound = document.getElementById("scream-sound");
-
-      jumpscare.style.display = "flex";
-      sound.play();
-
-      setTimeout(() => {
-        jumpscare.style.display = "none";
-      }, 3000); // 3 saniye sonra kaybolur
-    }
+    fetch('https://api64.ipify.org?format=json')
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('ip').textContent = data.ip;
+      })
+      .catch(error => {
+        console.error('IP alınamadı:', error);
+        document.getElementById('ip').textContent = 'IP alınamadı';
+      });
   </script>
 </body>
 </html>
