@@ -12,8 +12,23 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-direction: column;
       font-family: sans-serif;
-      font-size: 24px;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 20px;
+      cursor: pointer;
+      background-color: red;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background-color: darkred;
     }
 
     #jumpscare {
@@ -36,7 +51,10 @@
   </style>
 </head>
 <body>
-  <div>Hazır mısın? Herhangi bir tuşa bas!</div>
+  <div>
+    <h2>Hazırsan butona tıkla!</h2>
+    <button onclick="triggerJumpscare()">Tıkla!</button>
+  </div>
 
   <div id="jumpscare">
     <img src="https://i.imgur.com/Z9qZ6Xy.png" alt="Jumpscare Image" />
@@ -44,7 +62,7 @@
   </div>
 
   <script>
-    document.addEventListener("keydown", function () {
+    function triggerJumpscare() {
       const jumpscare = document.getElementById("jumpscare");
       const sound = document.getElementById("scream-sound");
 
@@ -54,7 +72,7 @@
       setTimeout(() => {
         jumpscare.style.display = "none";
       }, 3000); // 3 saniye sonra kaybolur
-    });
+    }
   </script>
 </body>
 </html>
